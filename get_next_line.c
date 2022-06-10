@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/get_next_line.h"
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
+#include "get_next_line.h"
 
 char	*get_next_line(int fd)
 {
@@ -26,7 +23,7 @@ char	*get_next_line(int fd)
 	if (string && has_line(string) == 1)
 		return (get_line(&string));
 	read_bytes = read(fd, buffer, BUFFER_SIZE);
-	if (read_bytes == -1)
+	if (read_bytes < 0)
 	{
 		free(string);
 		return (NULL);
@@ -51,7 +48,10 @@ char	*get_line(char **str)
 
 	i = 0;
 	if (str == NULL || *str == NULL)
+	{
+		free(*str);
 		return (NULL);
+	}
 	while ((*str)[i] != '\0' && (*str)[i] != '\n')
 		i++;
 	line = ft_strndup(*str, 0, i);

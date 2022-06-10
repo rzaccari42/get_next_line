@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/get_next_line.h"
+#include "get_next_line.h"
 
-size_t	ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
-	size_t	cmp;
+	int	cmp;
 
 	if (!str)
 		return (0);
@@ -29,19 +29,23 @@ char	*ft_strjoin(char *str1, char *str2)
 	char	*string;
 	int		stringlen;
 	int		i;
+	int		j;
 
 	stringlen = ft_strlen(str1) + ft_strlen(str2) + 1;
 	string = malloc(stringlen * sizeof(char));
 	if (string == NULL)
 		return (NULL);
 	i = 0;
+	j = 0;
 	if (str1)
-		while (*str1 != '\0')
-			string[i++] = *str1++;
+		while (str1[j] != '\0')
+			string[i++] = str1[j++];
+	j = 0;
 	if (str2)
-		while (*str2 != '\0')
-			string[i++] = *str2++;
+		while (str2[j] != '\0')
+			string[i++] = str2[j++];
 	string[i] = 0;
+	free(str1);
 	return (string);
 }
 
