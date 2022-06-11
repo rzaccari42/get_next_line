@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rzaccari <rzaccari@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: rzaccari <rzaccari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 17:27:55 by rzaccari          #+#    #+#             */
-/*   Updated: 2022/06/09 23:19:47 by rzaccari         ###   ########.fr       */
+/*   Updated: 2022/06/11 17:37:55 by rzaccari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ char	*get_next_line(int fd)
 	{
 		string = ft_strjoin(string, buffer);
 		if (has_line(string) == 1)
-			break;
+			break ;
 		read_bytes = read(fd, buffer, BUFFER_SIZE);
 		buffer[read_bytes] = '\0';
 	}
-	return(get_line(&string));
+	return (get_line(&string));
 }
 
 char	*get_line(char **str)
